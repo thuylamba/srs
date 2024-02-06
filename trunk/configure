@@ -239,7 +239,7 @@ fi
 
 # The backtrace symbol option.
 if [[ $SRS_BACKTRACE == YES ]]; then
-    SrsLinkOptions="${SrsLinkOptions} -rdynamic";
+    SrsLinkOptions="${SrsLinkOptions} -rdynamic -latomic";
 fi
 
 # For address sanitizer

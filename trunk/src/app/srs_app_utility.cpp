@@ -111,7 +111,40 @@ string srs_path_build_timestamp(string template_path)
     
     // the buffer to format the date and time.
     char buf[64];
-    
+    // thanh@
+    ///data/[vhost]/[app]/[stream]/[yyyy]/[mm]/[dd]
+    if (true) {
+      snprintf(buf, sizeof(buf), "%04d", 1900 + now.tm_year);
+      path = srs_string_replace(path, "[yyyy]", buf);
+    }
+    if (true) {
+      snprintf(buf, sizeof(buf), "%02d", 1 + now.tm_mon);
+      path = srs_string_replace(path, "[mm]", buf);
+    }
+    if (true) {
+        snprintf(buf, sizeof(buf), "%02d", now.tm_mday);
+        path = srs_string_replace(path, "[dd]", buf);
+    }
+    // [HH], replace this const to current hour.
+    if (true) {
+        snprintf(buf, sizeof(buf), "%02d", now.tm_hour);
+        path = srs_string_replace(path, "[HH]", buf);
+    }
+    // [MM], repleace this const to current minute.
+    if (true) {
+        snprintf(buf, sizeof(buf), "%02d", now.tm_min);
+        path = srs_string_replace(path, "[MM]", buf);
+    }
+    // [SS], repleace this const to current second.
+    if (true) {
+        snprintf(buf, sizeof(buf), "%02d", now.tm_sec);
+        path = srs_string_replace(path, "[SS]", buf);
+    }
+    if (true) {
+        snprintf(buf, sizeof(buf), "%04d", (int)(tv.tv_usec / 1000));
+        path = srs_string_replace(path, "[FFFF]", buf);
+    }
+    // end
     // [2006], replace with current year.
     if (true) {
         snprintf(buf, sizeof(buf), "%04d", 1900 + now.tm_year);
